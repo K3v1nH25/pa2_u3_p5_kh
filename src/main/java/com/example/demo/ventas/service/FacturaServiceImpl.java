@@ -1,5 +1,7 @@
 package com.example.demo.ventas.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,30 @@ public class FacturaServiceImpl implements IFacturaService {
 		// TODO Auto-generated method stub
 		this.iFacturaRepository.insertar(factura);
 
+	}
+
+	@Override
+	public List<Factura> buscarInnerJoin() {
+		// TODO Auto-generated method stub
+		return this.iFacturaRepository.seleccionarInnerJoin();
+	}
+
+	@Override
+	public List<Factura> buscarFacturasRightJoin() {
+		// TODO Auto-generated method stub
+		return this.iFacturaRepository.seleccionarFacturasRightJoin();
+	}
+
+	@Override
+	public List<Factura> buscarFacturasLeftJoin() {
+		// TODO Auto-generated method stub
+		return this.iFacturaRepository.seleccionarFacturasLeftJoin();
+	}
+
+	@Override
+	public List<Factura> buscarFacturasFullJoin() {
+		// TODO Auto-generated method stub
+		return this.iFacturaRepository.seleccionarFacturasFullJoin();
 	}
 
 }

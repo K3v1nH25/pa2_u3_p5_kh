@@ -74,4 +74,10 @@ public class DetalleFactura {
 		this.factura = factura;
 	}
 
+	@Override
+	public String toString() {
+		return "DetalleFactura [id=" + id + ", cantidad=" + cantidad + ", codigoBarras=" + codigoBarras
+				+ ", nombreProducto=" + nombreProducto + "]";
+	}
+
 }
