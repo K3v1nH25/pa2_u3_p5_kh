@@ -24,6 +24,9 @@ public class Factura {
 	@Column(name = "fact_id")
 	private Integer id;
 
+	@Column(name = "fact_nombre_empresa")
+	private String nombreEmpresa;
+
 	@Column(name = "fact_numero")
 	private String numero;
 
@@ -78,10 +81,18 @@ public class Factura {
 		this.cedula = cedula;
 	}
 
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
+	}
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
+	}
+
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", numero=" + numero + ", fecha=" + fecha + ", cedula=" + cedula
-				+ ", detalleFactura=" + detalleFactura + "]";
+		return "Factura [id=" + id + ", nombreEmpresa=" + nombreEmpresa + ", numero=" + numero + ", fecha=" + fecha
+				+ ", cedula=" + cedula + ", detalleFactura=" + detalleFactura + "]";
 	}
 
 }
