@@ -9,6 +9,9 @@ import com.example.demo.ventas.repository.modelo.Factura;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -86,5 +89,33 @@ public class FacturaRepositoryImpl implements IFacturaRepository {
 			f.getDetalleFactura().size();
 		}
 		return lista;
+	}
+
+	@Override
+	public List<Factura> seleccionarFacturasWhereJoin() {
+		// TODO Auto-generated method stub
+		// SQL: SELECT f.* FROM factura f, detalle_factura d WHERE f.fact_id =
+		// d.defa_id_factura
+		// JPQL: SELECT f FROM Factura f, DetalleFactura d
+		// WHERE f = d.factura
+		TypedQuery<Factura> myQuery = this.entityManager
+				.createQuery("SELECT f FROM Factura f, DetalleFactura d WHERE f = d.factura", Factura.class);
+		List<Factura> lista = myQuery.getResultList();
+		for (Factura f : lista) {
+			f.getDetalleFactura().size();
+		}
+		return myQuery.getResultList();
+	}
+	
+	// Fetch es mas eficiente en terminos de numero de consultas
+	// Native query es mucho mas rapido SQL puro (hibernate)
+	@Override
+	public List<Factura> seleccionarFacturasFetchJoin() {
+		// TODO Auto-generated method stub
+		// SELECT f FROM Factura f JOIN FETCH f.detalleFactura d
+		TypedQuery<Factura> myQuery = this.entityManager
+				.createQuery("SELECT f FROM Factura f JOIN FETCH f.detalleFactura d", Factura.class);
+
+		return myQuery.getResultList();
 	}
 }
