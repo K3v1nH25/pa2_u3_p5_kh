@@ -38,6 +38,8 @@ public class Factura {
 
 	@OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<DetalleFactura> detalleFactura;
+	
+	
 
 	// getters and setters
 
