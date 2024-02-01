@@ -28,27 +28,63 @@ public class HotelServiceImpl implements IHotelService {
 	}
 
 	@Override
-	public List<Hotel> buscarPorNombre(String nombre) {
+	public List<Hotel> buscarPorNombreInner(String nombre) {
 		// TODO Auto-generated method stub
-		return this.iHotelRepository.seleccionarPorNombre(nombre);
+		return this.iHotelRepository.seleccionarPorNombreInner(nombre);
 	}
 
 	@Override
-	public List<Hotel> buscarPorDireccion(String direccion) {
+	public List<Hotel> buscarPorDireccionLeft(String direccion) {
 		// TODO Auto-generated method stub
-		return this.iHotelRepository.seleccionarPorDireccion(direccion);
+		return this.iHotelRepository.seleccionarPorDireccionLeft(direccion);
 	}
 
 	@Override
-	public List<Hotel> buscarPorCategoria(String categoria) {
+	public List<Hotel> buscarPorCategoriaRigth(String categoria) {
 		// TODO Auto-generated method stub
-		return this.iHotelRepository.seleccionarPorCategoria(categoria);
+		return this.iHotelRepository.seleccionarPorCategoriaRigth(categoria);
 	}
 
 	@Override
-	public List<Hotel> buscarPorNumeroHabitaciones(String numeroHabitaciones) {
+	public List<Hotel> buscarPorNumeroHabitacionesFull(String numeroHabitaciones) {
 		// TODO Auto-generated method stub
-		return this.iHotelRepository.seleccionarPorNumeroHabitaciones(numeroHabitaciones);
+		return this.iHotelRepository.seleccionarPorNumeroHabitacionesFull(numeroHabitaciones);
+	}
+
+	@Override
+	public List<Hotel> buscarPorNombreFetch(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.seleccionarPorNombreFetch(nombre);
+	}
+
+	@Override
+	public List<Hotel> buscarPorDireccionInner(String direccion) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.seleccionarPorDireccionInner(direccion);
+	}
+
+	@Override
+	public List<Hotel> buscarPorCategoriaLeft(String categoria) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.seleccionarPorCategoriaLeft(categoria);
+	}
+
+	@Override
+	public List<Hotel> buscarPorNumeroHabitacionesRight(String numeroHabitaciones) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.seleccionarPorNumeroHabitacionesRight(numeroHabitaciones);
+	}
+
+	@Override
+	public List<Hotel> buscarPorNombreFull(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.seleccionarPorNombreFull(nombre);
+	}
+
+	@Override
+	public List<Hotel> buscarPorDireccionFetch(String direccion) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.seleccionarPorDireccionFetch(direccion);
 	}
 
 }

@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.ventas.repository.modelo.DetalleFactura;
-import com.example.demo.ventas.repository.modelo.Factura;
-import com.example.demo.ventas.repository.modelo.dto.FacturaDTO;
-import com.example.demo.ventas.service.IFacturaService;
+import com.example.demo.hoteles.repository.modelo.Hotel;
+import com.example.demo.hoteles.service.IHotelService;
 
 @SpringBootApplication
 public class Pa2U3P5KhApplication implements CommandLineRunner {
 
 	@Autowired
-	private IFacturaService iFacturaService;
+	private IHotelService iHotelService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U3P5KhApplication.class, args);
@@ -29,53 +24,64 @@ public class Pa2U3P5KhApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-//		Factura fact = new Factura();
-//		fact.setCedula("17505");
-//		fact.setFecha(LocalDateTime.now());
-//		fact.setNumero("0002-17172");
-//
-//		DetalleFactura det1 = new DetalleFactura();
-//		det1.setCantidad(15);
-//		det1.setCodigoBarras("7878");
-//		det1.setFactura(fact);
-//		det1.setNombreProducto("Azucar");
-//
-//		DetalleFactura det2 = new DetalleFactura();
-//		det2.setCantidad(10);
-//		det2.setCodigoBarras("9669");
-//		det2.setFactura(fact);
-//		det2.setNombreProducto("Sal");
-//
-//		DetalleFactura det3 = new DetalleFactura();
-//		det3.setCantidad(5);
-//		det3.setCodigoBarras("5858");
-//		det3.setFactura(fact);
-//		det3.setNombreProducto("Agua");
-//
-//		List<DetalleFactura> listaDetalle = new ArrayList<>();
-//		listaDetalle.add(det1);
-//		listaDetalle.add(det2);
-//		listaDetalle.add(det3);
-//
-//		fact.setDetalleFactura(listaDetalle);
-//		this.iFacturaService.guardar(fact);
+		System.out.println("INNER JOIN");
+		List<Hotel> lista = this.iHotelService.buscarPorNombreInner("La catedral");
+		for (Hotel h : lista) {
+			System.out.println(h.getHabitaciones());
+		}
 
-		System.out.println("UPDATE");
-		int lista = this.iFacturaService.actualizarFechas(LocalDateTime.of(2020, 1, 9, 12, 50),
-				LocalDateTime.of(2024, 1, 29, 20, 47));
-		System.out.println(lista);
+		System.out.println("INNER JOIN");
+		List<Hotel> lista2 = this.iHotelService.buscarPorDireccionInner("Centro de Quito");
+		for (Hotel h : lista2) {
+			System.out.println(h.getHabitaciones());
+		}
 
-		System.out.println("DELETE");
-		int lista2 = this.iFacturaService.borrarPorNumero("0001-34512");
-		System.out.println(lista2);
+		System.out.println("LEFT JOIN");
+		List<Hotel> lista3 = this.iHotelService.buscarPorDireccionLeft("Centro de Quito");
+		for (Hotel h : lista3) {
+			System.out.println(h.getHabitaciones());
+		}
 
-		// this.iFacturaService.borrar(3);
+		System.out.println("LEFT JOIN");
+		List<Hotel> lista4 = this.iHotelService.buscarPorCategoriaLeft("3 estrellas");
+		for (Hotel h : lista4) {
+			System.out.println(h.getHabitaciones());
+		}
 
-		// DTO: data Transfer Object -Patron de diseño
-		System.out.println("DTO");
-		List<FacturaDTO> listaDTO = this.iFacturaService.buscarFcaturasDTO();
-		for (FacturaDTO fDto : listaDTO) {
-			System.out.println(fDto);
+		System.out.println("RIGTH JOIN");
+		List<Hotel> lista5 = this.iHotelService.buscarPorCategoriaRigth("3 estrellas");
+		for (Hotel h : lista5) {
+			System.out.println(h.getHabitaciones());
+		}
+
+		System.out.println("RIGTH JOIN");
+		List<Hotel> lista6 = this.iHotelService.buscarPorNumeroHabitacionesRight("40");
+		for (Hotel h : lista6) {
+			System.out.println(h.getHabitaciones());
+		}
+
+		System.out.println("FULL JOIN");
+		List<Hotel> lista7 = this.iHotelService.buscarPorNumeroHabitacionesFull("40");
+		for (Hotel h : lista7) {
+			System.out.println(h.getHabitaciones());
+		}
+
+		System.out.println("FULL JOIN");
+		List<Hotel> lista8 = this.iHotelService.buscarPorNombreFull("La catedral");
+		for (Hotel h : lista8) {
+			System.out.println(h.getHabitaciones());
+		}
+
+		System.out.println("FETCH JOIN");
+		List<Hotel> lista9 = this.iHotelService.buscarPorNombreFetch("La catedral");
+		for (Hotel h : lista9) {
+			System.out.println(h.getHabitaciones());
+		}
+
+		System.out.println("FETCH JOIN");
+		List<Hotel> lista10 = this.iHotelService.buscarPorDireccionFetch("Centro de Quito");
+		for (Hotel h : lista10) {
+			System.out.println(h.getHabitaciones());
 		}
 
 	}

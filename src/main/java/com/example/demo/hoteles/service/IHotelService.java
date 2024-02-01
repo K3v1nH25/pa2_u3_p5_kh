@@ -10,12 +10,24 @@ public interface IHotelService {
 
 	public void guardar(Hotel hotel);
 
-	public List<Hotel> buscarPorNombre(String nombre);
+	public List<Hotel> buscarPorNombreInner(String nombre);
 
-	public List<Hotel> buscarPorDireccion(String direccion);
+	public List<Hotel> buscarPorDireccionLeft(String direccion);
 
-	public List<Hotel> buscarPorCategoria(String categoria);
+	public List<Hotel> buscarPorCategoriaRigth(String categoria);
 
-	public List<Hotel> buscarPorNumeroHabitaciones(String numeroHabitaciones);
+	public List<Hotel> buscarPorNumeroHabitacionesFull(String numeroHabitaciones);
+
+	public List<Hotel> buscarPorNombreFetch(String nombre);
+
+	public List<Hotel> buscarPorDireccionInner(String direccion);
+
+	public List<Hotel> buscarPorCategoriaLeft(String categoria);
+
+	public List<Hotel> buscarPorNumeroHabitacionesRight(String numeroHabitaciones);
+
+	public List<Hotel> buscarPorNombreFull(String nombre);
+
+	public List<Hotel> buscarPorDireccionFetch(String direccion);
 
 }

@@ -10,12 +10,24 @@ public interface IHotelRepository {
 
 	public void insertar(Hotel hotel);
 
-	public List<Hotel> seleccionarPorNombre(String nombre);
+	public List<Hotel> seleccionarPorNombreInner(String nombre);
 
-	public List<Hotel> seleccionarPorDireccion(String direccion);
+	public List<Hotel> seleccionarPorDireccionLeft(String direccion);
 
-	public List<Hotel> seleccionarPorCategoria(String categoria);
+	public List<Hotel> seleccionarPorCategoriaRigth(String categoria);
 
-	public List<Hotel> seleccionarPorNumeroHabitaciones(String numeroHabitaciones);
+	public List<Hotel> seleccionarPorNumeroHabitacionesFull(String numeroHabitaciones);
+
+	public List<Hotel> seleccionarPorNombreFetch(String nombre);
+
+	public List<Hotel> seleccionarPorDireccionInner(String direccion);
+
+	public List<Hotel> seleccionarPorCategoriaLeft(String categoria);
+
+	public List<Hotel> seleccionarPorNumeroHabitacionesRight(String numeroHabitaciones);
+
+	public List<Hotel> seleccionarPorNombreFull(String nombre);
+
+	public List<Hotel> seleccionarPorDireccionFetch(String direccion);
 
 }
