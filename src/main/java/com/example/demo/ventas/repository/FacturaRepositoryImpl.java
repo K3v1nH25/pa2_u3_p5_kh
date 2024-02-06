@@ -16,6 +16,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
 
 @Repository
 @Transactional
@@ -36,6 +37,7 @@ public class FacturaRepositoryImpl implements IFacturaRepository {
 	}
 
 	@Override
+	@Transactional(value = TxType.MANDATORY)
 	public void insertar(Factura factura) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(factura);

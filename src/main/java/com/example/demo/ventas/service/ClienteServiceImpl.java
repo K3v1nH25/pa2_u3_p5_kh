@@ -16,14 +16,13 @@ public class ClienteServiceImpl implements IClienteService {
 	private IClienteRepository clienteRepository;
 
 	@Override
-	@Transactional(value = TxType.REQUIRED)
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public void guardar(Cliente cliente) {
 		// TODO Auto-generated method stub
-		this.clienteRepository.insertar(cliente);
 		try {
 			this.clienteRepository.insertar(cliente);
 		}catch (RuntimeException e) {
-			System.out.println("Error");
+			System.out.println(e.getClass());
 		}
 	}
 

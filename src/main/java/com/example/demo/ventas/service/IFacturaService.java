@@ -32,4 +32,9 @@ public interface IFacturaService {
 	public void borrar(Integer id);
 
 	public List<FacturaDTO> buscarFcaturasDTO();
+
+	public void prueba();
+
+	public void factura();
+
 }

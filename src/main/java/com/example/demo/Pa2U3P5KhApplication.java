@@ -38,9 +38,13 @@ public class Pa2U3P5KhApplication implements CommandLineRunner {
 		fact.setNumero("147");
 
 		Cliente clie = new Cliente();
-		clie.setApellido("Hurtado");
+		clie.setApellido(null);
 		clie.setNombre("Kevin");
-		this.facturaService.guardar(fact, clie);
+
+		//this.facturaService.guardar(fact, clie);
+		System.out.println("Main:" +TransactionSynchronizationManager.isActualTransactionActive());
+
+		this.facturaService.prueba();
 
 	}
 }
