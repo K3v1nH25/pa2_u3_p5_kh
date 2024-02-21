@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.example.demo.ventas.repository.modelo.Cliente;
@@ -16,6 +17,7 @@ import com.example.demo.ventas.service.IClienteService;
 import com.example.demo.ventas.service.IFacturaService;
 
 @SpringBootApplication
+@EnableAsync
 public class Pa2U3P5KhApplication implements CommandLineRunner {
 
 	@Autowired
@@ -55,21 +57,36 @@ public class Pa2U3P5KhApplication implements CommandLineRunner {
 //		long tiempoFinal = System.currentTimeMillis();
 //		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
 //		System.out.println("Tiempo transcurrido:" + tiempoTranscurrido);
-	
+
+//		System.out.println("Nombre Hilo:" + Thread.currentThread().getName());
+//		long tiempoInicial = System.currentTimeMillis();
+//		List<Cliente> listaCliente = new ArrayList<>();
+//		for (int i = 1; i <= 100; i++) {
+//			Cliente cliente = new Cliente();
+//			cliente.setNombre("CN" + i);
+//			cliente.setApellido("CA" + i);
+//			listaCliente.add(cliente);
+//		}
+//		listaCliente.parallelStream().forEach(cliente -> this.clienteService.guardar(cliente));
+//		long tiempoFinal = System.currentTimeMillis();
+//		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
+//		System.out.println("Tiempo transcurrido:" + tiempoTranscurrido);
+//	
+
 		System.out.println("Nombre Hilo:" + Thread.currentThread().getName());
 		long tiempoInicial = System.currentTimeMillis();
-		List<Cliente> listaCliente = new ArrayList<>();
-		for (int i = 1; i <= 100; i++) {
+		for (int i = 1; i <= 500; i++) {
 			Cliente cliente = new Cliente();
 			cliente.setNombre("CN" + i);
 			cliente.setApellido("CA" + i);
-			listaCliente.add(cliente);
+			this.clienteService.guardar(cliente);
 		}
-		listaCliente.parallelStream().forEach(cliente -> this.clienteService.guardar(cliente));
 		long tiempoFinal = System.currentTimeMillis();
-		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
+
+		long tiempoTranscurrido = (tiempoFinal - tiempoInicial);
 		System.out.println("Tiempo transcurrido:" + tiempoTranscurrido);
-	
-	
+		System.out.println("Se ah mandado a procesar sus 500 clientes, puede continuar con sus actividades");
+
+		// Tiempo trascurrido : 100
 	}
 }
